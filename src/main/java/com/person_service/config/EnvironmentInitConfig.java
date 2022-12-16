@@ -1,39 +1,46 @@
-package com.employee_test.employee_test.config;
+package com.person_service.config;
 
-import com.employee_test.employee_test.entity.Employee;
-import com.employee_test.employee_test.repository.EmployeeRepository;
+import com.person_service.entity.Person;
+import com.person_service.repository.PersonRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.time.LocalDate;
 
 @Configuration
 public class EnvironmentInitConfig {
 
     @Bean
-    CommandLineRunner putEmployeesToTheDatabase(EmployeeRepository employeeRepository) {
-        if (employeeRepository.count() > 0) {
+    CommandLineRunner putEmployeesToTheDatabase(PersonRepository personRepository) {
+        if (personRepository.count() > 0) {
             return null;
         }
         return args -> {
-            employeeRepository.save(Employee.builder()
+            personRepository.save(Person.builder()
                     .firstName("John")
                     .lastName("Tarasov")
+                            .birthDate(LocalDate.of(2001, 12, 4))
                     .build());
-            employeeRepository.save(Employee.builder()
+            personRepository.save(Person.builder()
                     .firstName("Oleksii")
                     .lastName("Borsykov")
+                    .birthDate(LocalDate.of(1337, 5, 30))
                     .build());
-            employeeRepository.save(Employee.builder()
+            personRepository.save(Person.builder()
                     .firstName("Oleh")
                     .lastName("Johnson")
+                    .birthDate(LocalDate.of(2005, 5, 9))
                     .build());
-            employeeRepository.save(Employee.builder()
+            personRepository.save(Person.builder()
                     .firstName("Mykola")
                     .lastName("Piterson")
+                    .birthDate(LocalDate.of(1992, 9, 11))
                     .build());
-            employeeRepository.save(Employee.builder()
+            personRepository.save(Person.builder()
                     .firstName("Mickle")
                     .lastName("Ivanov")
+                    .birthDate(LocalDate.of(1982, 7, 6))
                     .build());
         };
     }

@@ -1,19 +1,17 @@
-package com.employee_test.employee_test.dto;
+package com.person_service.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmployeeResponse {
+public class PersonResponse {
     private Long id;
     private String firstName;
     private String lastName;
-    private LocalDate birthDate;
+    private Integer age;
 }
